@@ -138,4 +138,5 @@ pre code.hljs {
 /* Also target pre elements containing hljs code */
 pre:has(code.hljs) {
   border-radius: 8px;
+  margin: 0.75em 0;
 }
