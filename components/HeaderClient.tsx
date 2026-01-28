@@ -33,12 +33,12 @@ export function HeaderClient({ posts }: HeaderClientProps) {
             BHHXX
           </Link>
 
-          <nav className="flex items-center gap-6">
+          <nav className="flex items-center gap-6 text-sm">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm hover:text-gray-600 dark:hover:text-gray-400 ${
+                className={`text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors ${
                   pathname === item.href
                     ? 'font-bold'
                     : ''

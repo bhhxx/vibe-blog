@@ -49,10 +49,10 @@ export function SearchButton({ posts }: SearchButtonProps) {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800"
+        className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
         aria-label="Search"
       >
-        🔍
+        搜索
       </button>
 
       {isOpen && (

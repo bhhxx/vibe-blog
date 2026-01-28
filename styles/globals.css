@@ -1,3 +1,6 @@
+/* Code highlighting styles */
+@import 'highlight.js/styles/github-dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,7 +15,6 @@ body {
   }
 }
 
-/* Code highlighting styles */
 pre code {
   display: block;
   overflow-x: auto;
