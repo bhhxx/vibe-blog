@@ -24,9 +24,9 @@ export function PostCard({ post }: PostCardProps) {
                 <Link
                   key={tag}
                   href={`/tags/${tag}`}
-                  className="hover:text-black dark:hover:text-white transition-colors"
+                  className="px-2 py-0.5 bg-gray-200 dark:bg-gray-800 rounded text-xs hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
                 >
-                  #{tag}
+                  {tag}
                 </Link>
               ))}
             </div>

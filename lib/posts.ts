@@ -8,6 +8,7 @@ export interface Post {
   slug: string;
   title: string;
   date: string;
+  updated?: string;
   tags: string[];
   description: string;
   content: string;
@@ -17,6 +18,7 @@ export interface PostMeta {
   slug: string;
   title: string;
   date: string;
+  updated?: string;
   tags: string[];
   description: string;
 }
@@ -40,6 +42,7 @@ export function getAllPosts(): PostMeta[] {
         slug,
         title: data.title || slug,
         date: data.date || new Date().toISOString(),
+        updated: data.updated,
         tags: data.tags || [],
         description: data.description || '',
       } as PostMeta;
@@ -61,6 +64,7 @@ export function getPostBySlug(slug: string): Post | null {
       slug,
       title: data.title || slug,
       date: data.date || new Date().toISOString(),
+      updated: data.updated,
       tags: data.tags || [],
       description: data.description || '',
       content,

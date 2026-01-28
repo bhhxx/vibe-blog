@@ -40,7 +40,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
 
         <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-          <time>{new Date(post.date).toLocaleDateString('zh-CN')}</time>
+          <time>发布于 {new Date(post.date).toLocaleDateString('zh-CN')}</time>
+          {post.updated && (
+            <>
+              <span>·</span>
+              <time>更新于 {new Date(post.updated).toLocaleDateString('zh-CN')}</time>
+            </>
+          )}
           {post.tags.length > 0 && (
             <>
               <span>·</span>
@@ -49,9 +55,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   <Link
                     key={tag}
                     href={`/tags/${tag}`}
-                    className="hover:text-blue-600 dark:hover:text-blue-400"
+                    className="px-2 py-0.5 bg-gray-200 dark:bg-gray-800 rounded text-xs hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
                   >
-                    #{tag}
+                    {tag}
                   </Link>
                 ))}
               </div>
