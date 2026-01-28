@@ -16,7 +16,7 @@ export default function TagsPage() {
             <Link
               key={tag}
               href={`/tags/${tag}`}
-              className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+              className="px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition"
             >
               <span className="font-medium">{tag}</span>
               <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
