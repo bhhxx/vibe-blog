@@ -27,9 +27,12 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <div className="mb-8">
         <Link
           href="/"
-          className="text-blue-600 dark:text-blue-400 hover:underline"
+          className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors inline-flex items-center gap-2"
         >
-          ← 返回首页
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>返回首页</span>
         </Link>
       </div>
 
