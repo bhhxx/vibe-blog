@@ -42,10 +42,16 @@ body {
   color: #6e7781;
 }
 
+/* Light mode code block border */
+code.hljs {
+  border: 1px solid #d0d7de;
+}
+
 /* Code blocks for dark mode */
 .dark .hljs {
-  background: #161b22;
+  background: #1f2428;
   color: #c9d1d9;
+  border: 1px solid #30363d;
 }
 
 .dark .hljs-comment,
@@ -122,4 +128,14 @@ body {
 
 .dark .hljs-strong {
   font-weight: bold;
+}
+
+/* Enhance code block rounded corners */
+pre code.hljs {
+  border-radius: 8px !important;
+}
+
+/* Also target pre elements containing hljs code */
+pre:has(code.hljs) {
+  border-radius: 8px;
 }

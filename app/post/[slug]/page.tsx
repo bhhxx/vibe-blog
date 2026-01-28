@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import Link from 'next/link';
 import { Giscus } from '@/components/Giscus';
+import { CodeBlock } from '@/components/CodeBlock';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -60,6 +61,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeHighlight]}
+          components={{
+            pre: ({ node, children, ...props }: any) => (
+              <CodeBlock {...props}>
+                {children}
+              </CodeBlock>
+            ),
+          }}
         >
           {post.content}
         </ReactMarkdown>
