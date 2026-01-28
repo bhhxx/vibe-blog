@@ -26,7 +26,7 @@ export function HeaderClient({ posts }: HeaderClientProps) {
   ];
 
   return (
-    <header className="border-b dark:border-gray-800">
+    <header className="border-b border-gray-300 dark:border-gray-800">
       <div className="max-w-4xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-xl font-bold">
