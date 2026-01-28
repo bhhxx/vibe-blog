@@ -12,9 +12,9 @@ export default function LinksPage() {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block p-4 border dark:border-gray-800 rounded-lg hover:border-blue-500 dark:hover:border-blue-500 transition"
+            className="block p-4 border border-gray-300 dark:border-gray-800 rounded-lg hover:border-black dark:hover:border-white transition"
           >
-            <div className="font-bold text-lg">{link.name}</div>
+            <div className="font-bold text-lg text-gray-700 dark:text-gray-200">{link.name}</div>
             <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
               {link.description}
             </div>
