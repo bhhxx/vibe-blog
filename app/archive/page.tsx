@@ -21,9 +21,11 @@ export default function ArchivePage() {
                   <Link
                     key={post.slug}
                     href={`/post/${post.slug}`}
-                    className="block hover:text-blue-600 dark:hover:text-blue-400"
+                    className="block transition-colors"
                   >
-                    <div className="font-medium">{post.title}</div>
+                    <div className="font-medium text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white">
+                      {post.title}
+                    </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">
                       {new Date(post.date).toLocaleDateString('zh-CN')}
                     </div>

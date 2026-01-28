@@ -9,7 +9,7 @@ export function PostCard({ post }: PostCardProps) {
   return (
     <article className="py-4">
       <Link href={`/post/${post.slug}`}>
-        <h2 className="text-xl font-bold hover:text-blue-600 dark:hover:text-blue-400">
+        <h2 className="text-xl font-bold text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors">
           {post.title}
         </h2>
       </Link>
@@ -24,7 +24,7 @@ export function PostCard({ post }: PostCardProps) {
                 <Link
                   key={tag}
                   href={`/tags/${tag}`}
-                  className="hover:text-blue-600 dark:hover:text-blue-400"
+                  className="hover:text-black dark:hover:text-white transition-colors"
                 >
                   #{tag}
                 </Link>
