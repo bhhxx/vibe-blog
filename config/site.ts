@@ -11,10 +11,10 @@ export const siteConfig: SiteConfig = {
   },
   // giscus 评论配置
   giscus: {
-    repo: "bhhxx/blog", // 你的 GitHub 仓库
-    repoId: "", // 在 giscus.app 获取
+    repo: "bhhxx/vibe-blog",
+    repoId: "R_kgDORDivZw",
     category: "Announcements",
-    categoryId: "", // 在 giscus.app 获取
+    categoryId: "DIC_kwDORDivZ84C1nAR",
     mapping: "pathname",
     reactionsEnabled: true,
     inputPosition: "bottom",

@@ -1,4 +1,5 @@
 import { links } from '@/data/links';
+import { Giscus } from '@/components/Giscus';
 
 export default function LinksPage() {
   return (
@@ -33,6 +34,8 @@ export default function LinksPage() {
 描述: 一句话描述你的网站`}
         </pre>
       </div>
+
+      <Giscus />
     </div>
   );
 }
