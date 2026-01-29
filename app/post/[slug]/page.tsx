@@ -71,6 +71,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeHighlight]}
           components={{
+            h1: ({ children }) => null, // 隐藏文章中的 H1 标题，避免重复
             pre: ({ node, children, ...props }: any) => (
               <CodeBlock {...props}>
                 {children}
