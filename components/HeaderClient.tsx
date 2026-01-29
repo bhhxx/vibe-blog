@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from './ThemeToggle';
 import { SearchButton } from './SearchButton';
+import { siteConfig } from '@/config/site';
 
 interface HeaderClientProps {
   posts: Array<{
@@ -30,7 +31,7 @@ export function HeaderClient({ posts }: HeaderClientProps) {
       <div className="max-w-4xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-xl font-bold">
-            BHHXX
+            {siteConfig.author}
           </Link>
 
           <nav className="flex items-center gap-6 text-sm">

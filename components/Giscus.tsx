@@ -2,6 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import { useEffect, useRef } from 'react';
+import { siteConfig } from '@/config/site';
 
 export function Giscus() {
   const ref = useRef<HTMLDivElement>(null);
@@ -12,17 +13,17 @@ export function Giscus() {
 
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
-    script.setAttribute('data-repo', 'bhhxx/blog');
-    script.setAttribute('data-repo-id', '');
-    script.setAttribute('data-category', 'Announcements');
-    script.setAttribute('data-category-id', '');
-    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-repo', siteConfig.giscus.repo);
+    script.setAttribute('data-repo-id', siteConfig.giscus.repoId);
+    script.setAttribute('data-category', siteConfig.giscus.category);
+    script.setAttribute('data-category-id', siteConfig.giscus.categoryId);
+    script.setAttribute('data-mapping', siteConfig.giscus.mapping);
     script.setAttribute('data-strict', '0');
-    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-reactions-enabled', siteConfig.giscus.reactionsEnabled ? '1' : '0');
     script.setAttribute('data-emit-metadata', '0');
-    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-input-position', siteConfig.giscus.inputPosition);
     script.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
-    script.setAttribute('data-lang', 'zh-CN');
+    script.setAttribute('data-lang', siteConfig.giscus.lang);
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
 

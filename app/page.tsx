@@ -1,5 +1,6 @@
 import { getAllPosts } from '@/lib/posts';
 import { PostCard } from '@/components/PostCard';
+import { siteConfig } from '@/config/site';
 
 export default function Home() {
   const posts = getAllPosts();
@@ -7,9 +8,9 @@ export default function Home() {
   return (
     <div>
       <section className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">你好，我是 BHHXX</h1>
+        <h1 className="text-4xl font-bold mb-4">{siteConfig.greeting.title}</h1>
         <p className="text-xl text-gray-700 dark:text-gray-300">
-          欢迎来到我的个人博客
+          {siteConfig.greeting.subtitle}
         </p>
       </section>
 

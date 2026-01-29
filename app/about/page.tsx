@@ -1,14 +1,28 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import { siteConfig } from '@/config/site';
 
 export default function AboutPage() {
-  const aboutPath = path.join(process.cwd(), 'data/about.md');
-  const fileContents = fs.readFileSync(aboutPath, 'utf8');
-  const { content } = matter(fileContents);
+  const aboutContent = `
+你好！我是 ${siteConfig.author}。
+
+这是我的个人博客，记录我的学习和生活。
+
+## 技术栈
+
+这个博客使用以下技术构建：
+
+- Next.js 15
+- TypeScript
+- TailwindCSS
+- Markdown
+
+## 联系方式
+
+${siteConfig.links.github ? `- GitHub: [${siteConfig.author}](${siteConfig.links.github})` : ''}
+${siteConfig.links.email ? `- Email: ${siteConfig.links.email.replace('mailto:', '')}` : ''}
+`;
 
   return (
     <div>
@@ -19,7 +33,7 @@ export default function AboutPage() {
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeHighlight]}
         >
-          {content}
+          {aboutContent}
         </ReactMarkdown>
       </article>
     </div>
