@@ -31,12 +31,14 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
         </Link>
       </div>
 
-      <h1 className="text-3xl font-bold mb-8">
-        标签: #{tag}
-        <span className="ml-2 text-lg text-gray-600 dark:text-gray-400">
-          ({posts.length} 篇文章)
+      <div className="mb-8 flex items-center gap-3">
+        <span className="px-3 py-1 bg-gray-200 dark:bg-gray-800 rounded-lg text-xl hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors">
+          {tag}
         </span>
-      </h1>
+        <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+          {posts.length} 篇文章
+        </span>
+      </div>
 
       <div className="space-y-4">
         {posts.map((post) => (
