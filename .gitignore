@@ -27,6 +27,11 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# SSH 密钥（安全敏感）
+.ssh/
+*.pem
+*.key
+
 # Vercel
 .vercel
 

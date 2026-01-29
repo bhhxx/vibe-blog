@@ -7,6 +7,10 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "BHHXX's Blog",
   description: "极简个人博客",
+  icons: {
+    icon: '/icon.svg',
+    apple: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
