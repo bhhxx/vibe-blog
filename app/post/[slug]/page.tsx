@@ -1,11 +1,8 @@
 import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight';
 import Link from 'next/link';
 import { Giscus } from '@/components/Giscus';
-import { CodeBlock } from '@/components/CodeBlock';
+import { ArticleContent } from '@/components/ArticleContent';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -66,22 +63,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
       </header>
 
-      <div className="prose prose-lg dark:prose-invert max-w-none">
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeHighlight]}
-          components={{
-            h1: ({ children }) => null, // 隐藏文章中的 H1 标题，避免重复
-            pre: ({ node, children, ...props }: any) => (
-              <CodeBlock {...props}>
-                {children}
-              </CodeBlock>
-            ),
-          }}
-        >
-          {post.content}
-        </ReactMarkdown>
-      </div>
+      <ArticleContent content={post.content} />
 
       <Giscus />
     </article>
