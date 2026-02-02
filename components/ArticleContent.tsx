@@ -4,6 +4,7 @@ import React, { useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
 import { CodeBlock } from './CodeBlock';
 
 interface ArticleContentProps {
@@ -76,7 +77,7 @@ export function ArticleContent({ content }: ArticleContentProps) {
     <div className="prose prose-lg dark:prose-invert max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
+        rehypePlugins={[rehypeHighlight, rehypeRaw]}
         components={{
           h1: ({ children }) => null,
           h2: ({ children, ...props }: any) => (
@@ -118,6 +119,9 @@ export function ArticleContent({ content }: ArticleContentProps) {
             <CodeBlock {...props}>
               {children}
             </CodeBlock>
+          ),
+          img: ({ src, alt, width }: any) => (
+            <img src={src} alt={alt} style={{ maxWidth: width || '100%' }} />
           ),
         }}
       >
