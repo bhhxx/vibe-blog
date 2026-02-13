@@ -20,6 +20,14 @@ ${siteConfig.links.github ? `- GitHub: [${siteConfig.author}](${siteConfig.links
 ${siteConfig.links.email ? `- Email: ${siteConfig.links.email.replace('mailto:', '')}` : ''}
 `;
 
+  const wechatSection = siteConfig.wechat?.qrCode ? `
+## 公众号
+
+欢迎关注我的公众号！
+
+![公众号二维码](${siteConfig.wechat.qrCode})
+` : '';
+
   return (
     <div>
       <h1 className="text-3xl font-bold mb-8">关于</h1>
@@ -29,7 +37,7 @@ ${siteConfig.links.email ? `- Email: ${siteConfig.links.email.replace('mailto:',
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeHighlight]}
         >
-          {aboutContent}
+          {aboutContent + wechatSection}
         </ReactMarkdown>
       </article>
     </div>

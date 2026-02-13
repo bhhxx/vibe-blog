@@ -9,6 +9,10 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/bhhxx",
     email: "mailto:1640680356@qq.com",
   },
+  // 公众号配置
+  wechat: {
+    qrCode: "/wechat-qr.jpg",
+  },
   // giscus 评论配置
   giscus: {
     repo: "bhhxx/vibe-blog",

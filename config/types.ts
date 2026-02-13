@@ -14,6 +14,12 @@ export interface SiteConfig {
     zhihu?: string;
   };
 
+  // 公众号配置
+  wechat?: {
+    qrCode?: string; // 二维码图片路径
+    name?: string; // 公众号名称
+  };
+
   // Giscus 评论配置
   giscus: {
     repo: string;
