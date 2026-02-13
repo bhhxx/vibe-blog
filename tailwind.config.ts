@@ -15,6 +15,7 @@ const config: Config = {
       typography: ({ theme }: any) => ({
         DEFAULT: {
           css: {
+            fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
             lineHeight: '1.6',
             fontSize: '1rem',
             'h1': {
@@ -63,6 +64,7 @@ const config: Config = {
         },
         lg: {
           css: {
+            fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
             lineHeight: '1.6',
             fontSize: '1.05rem',
             'h1': {
