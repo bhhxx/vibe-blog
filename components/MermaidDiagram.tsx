@@ -1,38 +1,65 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
 
 interface MermaidDiagramProps {
   chart: string;
 }
 
-// Initialize mermaid once
-if (typeof window !== 'undefined' && !mermaid.getInitialized()) {
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: 'default',
-    securityLevel: 'loose',
-  });
-}
+let mermaidInitialized = false;
+
+const initializeMermaid = () => {
+  if (!mermaidInitialized) {
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'default',
+      securityLevel: 'loose',
+      fontFamily: 'inherit',
+    });
+    mermaidInitialized = true;
+  }
+};
 
 export function MermaidDiagram({ chart }: MermaidDiagramProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [id] = React.useState(() => `mermaid-${Math.random().toString(36).substr(2, 9)}`);
+  const [svg, setSvg] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [id] = useState(() => `mermaid-${Math.random().toString(36).substr(2, 9)}`);
 
   useEffect(() => {
-    if (ref.current && typeof window !== 'undefined') {
-      mermaid.render(id, chart).then((result) => {
-        if (ref.current) {
-          ref.current.innerHTML = result.svg;
+    if (typeof window !== 'undefined') {
+      initializeMermaid();
+
+      const renderDiagram = async () => {
+        try {
+          // In mermaid v11+, render returns { svg } object
+          const { svg } = await mermaid.render(id, chart);
+          setSvg(svg);
+          setError('');
+        } catch (err) {
+          console.error('Mermaid rendering error:', err);
+          setError(err instanceof Error ? err.message : 'Failed to render diagram');
         }
-      }).catch((error) => {
-        if (ref.current) {
-          ref.current.innerHTML = `<p class="text-red-500">Mermaid diagram error: ${error.message}</p>`;
-        }
-      });
+      };
+
+      renderDiagram();
     }
   }, [chart, id]);
 
-  return <div ref={ref} className="mermaid flex justify-center my-4" />;
+  if (error) {
+    return (
+      <div className="mermaid flex justify-center my-4">
+        <p className="text-red-500">Mermaid diagram error: {error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      ref={ref}
+      className="mermaid flex justify-center my-4"
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
 }

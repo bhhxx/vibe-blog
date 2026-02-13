@@ -116,25 +116,19 @@ export function ArticleContent({ content }: ArticleContentProps) {
               </a>
             </h6>
           ),
-          pre: ({ node, children, ...props }: any) => {
+          code: ({ node, inline, className, children, ...props }: any) => {
             // Check if this is a mermaid code block
-            const codeElement = (children as any)?.[0];
-            const isMermaid = props?.className?.includes('language-mermaid') ||
-                            props?.className?.includes('mermaid') ||
-                            codeElement?.props?.className?.includes('language-mermaid') ||
-                            codeElement?.props?.className?.includes('mermaid');
+            const isMermaid = className?.includes('language-mermaid') ||
+                            className?.includes('mermaid');
 
-            if (isMermaid) {
-              const mermaidCode = codeElement?.props?.children;
-              if (mermaidCode) {
-                return <MermaidDiagram chart={mermaidCode} />;
-              }
+            if (!inline && isMermaid) {
+              return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
             }
 
             return (
-              <CodeBlock {...props}>
+              <code className={className} {...props}>
                 {children}
-              </CodeBlock>
+              </code>
             );
           },
           img: ({ src, alt, width }: any) => (
