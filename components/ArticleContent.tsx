@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import { CodeBlock } from './CodeBlock';
+import { MermaidDiagram } from './MermaidDiagram';
 
 interface ArticleContentProps {
   content: string;
@@ -115,11 +116,27 @@ export function ArticleContent({ content }: ArticleContentProps) {
               </a>
             </h6>
           ),
-          pre: ({ node, children, ...props }: any) => (
-            <CodeBlock {...props}>
-              {children}
-            </CodeBlock>
-          ),
+          pre: ({ node, children, ...props }: any) => {
+            // Check if this is a mermaid code block
+            const codeElement = (children as any)?.[0];
+            const isMermaid = props?.className?.includes('language-mermaid') ||
+                            props?.className?.includes('mermaid') ||
+                            codeElement?.props?.className?.includes('language-mermaid') ||
+                            codeElement?.props?.className?.includes('mermaid');
+
+            if (isMermaid) {
+              const mermaidCode = codeElement?.props?.children;
+              if (mermaidCode) {
+                return <MermaidDiagram chart={mermaidCode} />;
+              }
+            }
+
+            return (
+              <CodeBlock {...props}>
+                {children}
+              </CodeBlock>
+            );
+          },
           img: ({ src, alt, width }: any) => (
             <img src={src} alt={alt} style={{ maxWidth: width || '100%' }} />
           ),
