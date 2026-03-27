@@ -1,6 +1,8 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { siteConfig } from '@/config/site';
 
 export default function AboutPage() {
@@ -34,8 +36,8 @@ ${siteConfig.links.email ? `- Email: ${siteConfig.links.email.replace('mailto:',
 
       <article className="prose dark:prose-invert max-w-none">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeHighlight]}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeKatex, rehypeHighlight]}
         >
           {aboutContent + wechatSection}
         </ReactMarkdown>
