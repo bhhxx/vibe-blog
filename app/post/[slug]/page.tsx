@@ -21,7 +21,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="max-w-3xl">
-      <div className="mb-8">
+      <div className="mb-8 max-w-3xl">
         <Link
           href="/"
           className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors inline-flex items-center gap-2"
@@ -33,7 +33,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </Link>
       </div>
 
-      <header className="mb-8">
+      <header className="mb-8 max-w-3xl">
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
 
         <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
@@ -63,9 +63,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
       </header>
 
-      <ArticleContent content={post.content} />
+      <ArticleContent content={post.content} toc={post.toc} tocDepth={post.tocDepth} />
 
-      <Giscus />
+      <div className="mt-10 max-w-3xl">
+        <Giscus />
+      </div>
     </article>
   );
 }

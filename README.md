@@ -59,6 +59,8 @@ title: "文章标题"
 date: 2024-01-28
 tags: ["标签1", "标签2"]
 description: "文章摘要"
+toc: true
+tocDepth: 3
 ---
 
 # 文章标题
@@ -67,6 +69,11 @@ description: "文章摘要"
 ```
 
 文件命名格式：`YYYY-MM-DD-标题.md`
+
+可选 frontmatter：
+
+- `toc: true | false`：强制显示或隐藏文章大纲；不写时按文章长度自动决定
+- `tocDepth: 2 | 3 | 4...`：控制大纲显示到几级标题，默认 `3`
 
 ## 自定义配置
 

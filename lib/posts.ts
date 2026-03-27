@@ -11,6 +11,8 @@ export interface Post {
   updated?: string;
   tags: string[];
   description: string;
+  toc?: boolean;
+  tocDepth?: number;
   content: string;
 }
 
@@ -21,6 +23,8 @@ export interface PostMeta {
   updated?: string;
   tags: string[];
   description: string;
+  toc?: boolean;
+  tocDepth?: number;
 }
 
 // 获取所有文章的元数据
@@ -54,6 +58,8 @@ export function getAllPosts(): PostMeta[] {
           updated: data.updated,
           tags: data.tags || [],
           description: data.description || '',
+          toc: data.toc,
+          tocDepth: data.tocDepth,
         });
       }
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
@@ -70,6 +76,8 @@ export function getAllPosts(): PostMeta[] {
         updated: data.updated,
         tags: data.tags || [],
         description: data.description || '',
+        toc: data.toc,
+        tocDepth: data.tocDepth,
       });
     }
   }
@@ -131,6 +139,8 @@ export function getPostBySlug(slug: string): Post | null {
           updated: data.updated,
           tags: data.tags || [],
           description: data.description || '',
+          toc: data.toc,
+          tocDepth: data.tocDepth,
           content,
         };
       }
@@ -148,6 +158,8 @@ export function getPostBySlug(slug: string): Post | null {
       updated: data.updated,
       tags: data.tags || [],
       description: data.description || '',
+      toc: data.toc,
+      tocDepth: data.tocDepth,
       content,
     };
   } catch {
