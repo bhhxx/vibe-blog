@@ -1,3 +1,12 @@
+---
+title: "vLLM 的 PagedAttention：KV cache 为什么要分页"
+date: 2026-04-17
+tags: ["AI Infra"]
+description: "理解 vLLM 如何通过分页管理 KV cache"
+toc: true
+tocDepth: 3
+---
+
 # vLLM 的 PagedAttention：KV cache 为什么要分页
 
 Paged attention 是 vLLM 的核心机制之一，它借鉴操作系统中虚拟内存和分页的思想，将存放在 GPU 显存中的 KV cache 划分为固定大小的块，并通过逻辑块到物理块的映射实现非连续存储，从而减少显存浪费和碎片。

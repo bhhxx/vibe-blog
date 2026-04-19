@@ -1,3 +1,12 @@
+---
+title: "深入理解 FlashAttention：分块、算子融合与重计算的艺术"
+date: 2026-04-16
+tags: ["AI Infra"]
+description: "从 IO-aware 角度理解 FlashAttention-1 的核心思路"
+toc: true
+tocDepth: 3
+---
+
 # 深入理解 FlashAttention：分块、算子融合与重计算的艺术
 
 很多人第一次接触 FlashAttention 时，会直觉以为它的本质是“少算了很多”。但如果只聚焦 FlashAttention-1 的核心思路，更准确的说法其实是：**它主要不是靠少做多少数学运算，而是靠少搬运那些本来会反复进出 HBM 的中间结果。**

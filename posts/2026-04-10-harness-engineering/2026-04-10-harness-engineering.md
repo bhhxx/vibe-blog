@@ -1,3 +1,12 @@
+---
+title: "Harness Engineering：把模型变成 agent 的那层系统"
+date: 2026-04-10
+tags: ["Agent"]
+description: "拆解 Agent = Harness + Model 背后的系统设计"
+toc: true
+tocDepth: 2
+---
+
 # Harness Engineering：把模型变成 agent 的那层系统
 
 本文的核心就是：Agent = Harness + Model
