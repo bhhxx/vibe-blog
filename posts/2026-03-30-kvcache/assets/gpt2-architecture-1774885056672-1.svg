@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1350" viewBox="0 0 1400 1350" role="img" aria-labelledby="title desc">
+  <title id="title">GPT-2-style 124M 架构 - 最终精准版</title>
+  <desc id="desc">基于 gpt.py 实现的米色系架构图，包含 Attention 内部细节与精确标题</desc>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#433422"/>
+    </marker>
+    <filter id="softShadow" x="-10%" y="-5%" width="120%" height="110%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="1" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <style>
+      text { font-family: 'Optima', 'Candara', 'Segoe UI', sans-serif; fill: #433422; }
+      .title-main { font-size: 30px; font-weight: 700; fill: #634832; text-anchor: middle; }
+      .box-label { font-size: 16px; font-weight: 700; text-anchor: middle; }
+      .box-sub { font-size: 11px; fill: #8c7b6c; text-anchor: middle; }
+      .dim-label { font-size: 12px; font-weight: 600; fill: #6b8e23; }
+      .callout-box { font-size: 13px; font-weight: 600; fill: #433422; }
+      .residual-line { fill: none; stroke: #bc6c25; stroke-width: 2; stroke-dasharray: 4,4; }
+      .main-flow { fill: none; stroke: #433422; stroke-width: 1.8; }
+      .main-flow-arrow { fill: none; stroke: #433422; stroke-width: 1.8; marker-end: url(#arrowhead); }
+      .container-border { stroke: #d7ccc8; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <!-- 背景：温暖米色 -->
+  <rect width="1400" height="1350" fill="#fdfaf0"/>
+
+  <text x="700" y="60" class="title-main">GPT-2-style 124M Architecture</text>
+  <text x="700" y="85" style="font-size: 14px; fill: #8c7b6c; text-anchor: middle; letter-spacing: 1px;">SYNCHRONIZED WITH THIS GPT.PY (Non-tied Weights)</text>
+
+  <!-- GPT Model 主容器 -->
+  <rect x="350" y="140" width="700" height="1080" rx="25" fill="#faf7f2" filter="url(#softShadow)" class="container-border"/>
+  <text x="430" y="185" style="font-size: 18px; font-weight: 800; fill: #d7ccc8; letter-spacing: 2px;">MODEL CORE</text>
+
+  <!-- LM Head 区域 -->
+  <rect x="540" y="180" width="320" height="45" rx="10" fill="#f5f5f5" stroke="#8c7b6c" stroke-width="1.5"/>
+  <text x="700" y="208" class="box-label">Linear Output Head</text>
+  <text x="700" y="220" class="box-sub">nn.Linear(768, 50257, bias=False)</text>
+  <text x="870" y="208" class="dim-label">(B, T, 50257)</text>
+
+  <rect x="550" y="250" width="300" height="40" rx="8" fill="#ffffff" stroke="#d7ccc8" stroke-width="1.2"/>
+  <text x="700" y="275" class="box-label">Final LayerNorm</text>
+  <text x="870" y="275" class="dim-label">(B, T, 768)</text>
+
+  <!-- Transformer Blocks 容器 -->
+  <rect x="400" y="320" width="600" height="620" rx="20" fill="#f4ece1" stroke="#d7ccc8" stroke-width="1"/>
+  <path d="M 380 400 Q 340 400, 340 630 T 380 860" fill="none" stroke="#bc6c25" stroke-width="2" stroke-opacity="0.4"/>
+  <text x="310" y="635" style="font-size: 26px; font-weight: 700; fill: #bc6c25; text-anchor: middle;">12 ×</text>
+  <text x="310" y="660" style="font-size: 11px; font-weight: 800; fill: #bc6c25; text-anchor: middle; letter-spacing: 1px;">LAYERS</text>
+
+  <!-- Transformer Block 内部布局 -->
+  <!-- 汇合点 1: Feed Forward Residual Add -->
+  <circle cx="700" cy="380" r="16" fill="#ffffff" stroke="#433422" stroke-width="1.5"/>
+  <text x="700" y="386" class="box-label" style="font-size: 18px;">+</text>
+  
+  <rect x="580" y="415" width="240" height="35" rx="6" fill="#ffffff" stroke="#d7ccc8" stroke-width="1"/>
+  <text x="700" y="437" class="box-label">Residual Dropout</text>
+
+  <rect x="560" y="465" width="280" height="60" rx="10" fill="#e8edde" stroke="#a3ad8d" stroke-width="2"/>
+  <text x="700" y="490" class="box-label" style="fill: #435b3e;">Feed Forward Block</text>
+  <text x="700" y="510" class="box-sub" style="fill: #435b3e;">768 → 3072 → 768 (GELU approx.)</text>
+  <text x="870" y="500" class="dim-label">(B, T, 768)</text>
+
+  <rect x="580" y="540" width="240" height="35" rx="6" fill="#ffffff" stroke="#d7ccc8" stroke-width="1"/>
+  <text x="700" y="562" class="box-label">LayerNorm 2</text>
+
+  <!-- 汇合点 2: Attention Residual Add -->
+  <circle cx="700" cy="620" r="16" fill="#ffffff" stroke="#433422" stroke-width="1.5"/>
+  <text x="700" y="626" class="box-label" style="font-size: 18px;">+</text>
+
+  <rect x="580" y="655" width="240" height="35" rx="6" fill="#ffffff" stroke="#d7ccc8" stroke-width="1"/>
+  <text x="700" y="677" class="box-label">Residual Dropout</text>
+
+  <rect x="520" y="705" width="360" height="75" rx="12" fill="#f2e3df" stroke="#c9ada7" stroke-width="2.2"/>
+  <text x="700" y="730" class="box-label" style="fill: #6d4c41;">Masked Multi-Head Attention</text>
+  <text x="700" y="750" class="box-sub" style="fill: #6d4c41; font-weight: 600;">12 Heads, Causal Mask, qkv_bias=False</text>
+  <text x="700" y="765" class="box-sub" style="fill: #6d4c41; font-style: italic;">Attn-Weights Dropout &amp; Output Projection</text>
+  <text x="890" y="745" class="dim-label">(B, T, 768)</text>
+
+  <rect x="580" y="795" width="240" height="35" rx="6" fill="#ffffff" stroke="#d7ccc8" stroke-width="1"/>
+  <text x="700" y="817" class="box-label">LayerNorm 1</text>
+
+  <!-- 底部输入层 -->
+  <rect x="580" y="970" width="240" height="35" rx="6" fill="#ffffff" stroke="#d7ccc8" stroke-width="1"/>
+  <text x="700" y="992" class="box-label">Embedding Dropout</text>
+
+  <!-- Embedding 区域 -->
+  <rect x="540" y="1030" width="320" height="55" rx="10" fill="#fdfbf7" stroke="#8c7b6c" stroke-width="1.5" filter="url(#softShadow)"/>
+  <text x="700" y="1055" class="box-label">Token + Position Embedding</text>
+  <text x="700" y="1070" class="box-sub">vocab_size: 50257 | context_len: 1024</text>
+
+  <rect x="610" y="1140" width="180" height="45" rx="10" fill="#433422"/>
+  <text x="700" y="1168" class="box-label" style="fill: #fdfaf0;">Input Tokens</text>
+
+  <!-- 连贯路径 -->
+  <path d="M 700 1140 V 1085" class="main-flow-arrow"/>
+  <path d="M 700 1030 V 1005" class="main-flow-arrow"/>
+  <path d="M 700 970 V 940" class="main-flow"/>
+  <circle cx="700" cy="890" r="3" fill="#433422"/> 
+  <path d="M 700 940 V 830" class="main-flow-arrow"/>
+  <path d="M 700 795 V 780" class="main-flow-arrow"/>
+  <path d="M 700 705 V 690" class="main-flow-arrow"/>
+  <path d="M 700 655 V 636" class="main-flow"/>
+  <circle cx="700" cy="595" r="3" fill="#433422"/>
+  <path d="M 700 604 V 575" class="main-flow-arrow"/>
+  <path d="M 700 540 V 525" class="main-flow-arrow"/>
+  <path d="M 700 465 V 450" class="main-flow-arrow"/>
+  <path d="M 700 415 V 396" class="main-flow"/>
+  <path d="M 700 364 V 290" class="main-flow-arrow"/>
+  <path d="M 700 250 V 225" class="main-flow-arrow"/>
+
+  <!-- 残差连接 -->
+  <path d="M 700 890 H 460 V 620 H 684" class="residual-line" style="marker-end: url(#arrowhead);"/>
+  <text x="470" y="612" style="font-size: 11px; fill: #bc6c25; font-weight: 700;">Residual Path</text>
+  <path d="M 700 595 H 510 V 380 H 684" class="residual-line" style="marker-end: url(#arrowhead);"/>
+  <text x="520" y="372" style="font-size: 11px; fill: #bc6c25; font-weight: 700;">Residual Path</text>
+
+  <!-- 标注注释 -->
+  <g transform="translate(1080, 480)">
+    <text x="0" y="0" style="font-size: 15px; font-weight: 700; fill: #634832;">Architecture Details</text>
+    <rect x="0" y="10" width="160" height="2" fill="#d7ccc8"/>
+    <text x="0" y="35" class="callout-box" style="fill: #8c7b6c;">• Sequential Pre-LN Design</text>
+    <text x="0" y="55" class="callout-box" style="fill: #8c7b6c;">• Independent Weight Embeddings</text>
+    <text x="0" y="75" class="callout-box" style="fill: #8c7b6c;">• 12 heads x 64 dim = 768</text>
+    <text x="0" y="95" class="callout-box" style="fill: #8c7b6c;">• GELU (Tanh Approximation)</text>
+    <text x="0" y="115" class="callout-box" style="fill: #8c7b6c;">• Learned Positional Encoding</text>
+  </g>
+
+  <!-- 说明 -->
+  <text x="700" y="1290" class="box-sub" style="font-size: 12px; font-style: italic;">This diagram is mathematically and structurally consistent with the gpt.py code provided.</text>
+</svg>
