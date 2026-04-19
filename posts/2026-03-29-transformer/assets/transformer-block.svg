@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="980" viewBox="0 0 1280 980" role="img" aria-labelledby="title desc">
+  <title id="title">GPT-2-style Transformer Block</title>
+  <desc id="desc">Standalone Pre-LN Transformer Block diagram matching the style of the GPT-2 architecture SVG.</desc>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#433422"/>
+    </marker>
+    <filter id="softShadow" x="-10%" y="-5%" width="120%" height="110%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="1" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      text { font-family: 'Optima', 'Candara', 'Segoe UI', sans-serif; fill: #433422; }
+      .title-main { font-size: 30px; font-weight: 700; fill: #634832; text-anchor: middle; }
+      .box-label { font-size: 16px; font-weight: 700; text-anchor: middle; }
+      .box-sub { font-size: 11px; fill: #8c7b6c; text-anchor: middle; }
+      .dim-label { font-size: 12px; font-weight: 600; fill: #6b8e23; }
+      .callout-box { font-size: 13px; font-weight: 600; fill: #433422; }
+      .residual-line { fill: none; stroke: #bc6c25; stroke-width: 2; stroke-dasharray: 4,4; }
+      .main-flow { fill: none; stroke: #433422; stroke-width: 1.8; }
+      .main-flow-arrow { fill: none; stroke: #433422; stroke-width: 1.8; marker-end: url(#arrowhead); }
+      .container-border { stroke: #d7ccc8; stroke-width: 1.2; }
+      .tiny-label { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="980" fill="#fdfaf0"/>
+
+  <text x="640" y="60" class="title-main">GPT-2-style Transformer Block</text>
+  <text x="640" y="86" style="font-size: 14px; fill: #8c7b6c; text-anchor: middle; letter-spacing: 1px;">PRE-LN DECODER BLOCK WITH CAUSAL SELF-ATTENTION</text>
+
+  <rect x="280" y="130" width="620" height="730" rx="26" fill="#faf7f2" filter="url(#softShadow)" class="container-border"/>
+  <text x="342" y="174" style="font-size: 18px; font-weight: 800; fill: #d7ccc8; letter-spacing: 2px;">BLOCK CORE</text>
+
+  <rect x="540" y="785" width="180" height="48" rx="10" fill="#433422"/>
+  <text x="630" y="815" class="box-label" style="fill: #fdfaf0;">Input x</text>
+  <text x="810" y="814" class="dim-label">(B, T, 768)</text>
+
+  <rect x="510" y="695" width="240" height="38" rx="7" fill="#ffffff" stroke="#d7ccc8" stroke-width="1.2"/>
+  <text x="630" y="719" class="box-label">LayerNorm 1</text>
+  <text x="810" y="719" class="dim-label">(B, T, 768)</text>
+
+  <rect x="445" y="590" width="370" height="84" rx="12" fill="#f2e3df" stroke="#c9ada7" stroke-width="2.2"/>
+  <text x="630" y="618" class="box-label" style="fill: #6d4c41;">Masked Multi-Head Attention</text>
+  <text x="630" y="639" class="box-sub" style="fill: #6d4c41; font-weight: 600;">12 Heads, Causal Mask, qkv_bias=False</text>
+  <text x="630" y="657" class="box-sub" style="fill: #6d4c41; font-style: italic;">QKV Projection - Scores - Mask - Softmax - Output Projection</text>
+  <text x="835" y="632" class="dim-label">(B, T, 768)</text>
+
+  <rect x="510" y="535" width="240" height="35" rx="6" fill="#ffffff" stroke="#d7ccc8" stroke-width="1"/>
+  <text x="630" y="557" class="box-label">Residual Dropout</text>
+
+  <circle cx="630" cy="480" r="17" fill="#ffffff" stroke="#433422" stroke-width="1.5"/>
+  <text x="630" y="486" class="box-label" style="font-size: 20px;">+</text>
+
+  <rect x="510" y="390" width="240" height="38" rx="7" fill="#ffffff" stroke="#d7ccc8" stroke-width="1.2"/>
+  <text x="630" y="414" class="box-label">LayerNorm 2</text>
+  <text x="810" y="414" class="dim-label">(B, T, 768)</text>
+
+  <rect x="485" y="285" width="290" height="74" rx="11" fill="#e8edde" stroke="#a3ad8d" stroke-width="2"/>
+  <text x="630" y="312" class="box-label" style="fill: #435b3e;">Feed Forward Block</text>
+  <text x="630" y="332" class="box-sub" style="fill: #435b3e; font-weight: 600;">Linear - GELU - Linear</text>
+  <text x="630" y="348" class="box-sub" style="fill: #435b3e;">768 -&gt; 3072 -&gt; 768</text>
+  <text x="810" y="326" class="dim-label">(B, T, 768)</text>
+
+  <rect x="510" y="232" width="240" height="35" rx="6" fill="#ffffff" stroke="#d7ccc8" stroke-width="1"/>
+  <text x="630" y="254" class="box-label">Residual Dropout</text>
+
+  <circle cx="630" cy="210" r="17" fill="#ffffff" stroke="#433422" stroke-width="1.5"/>
+  <text x="630" y="216" class="box-label" style="font-size: 20px;">+</text>
+
+  <rect x="530" y="138" width="200" height="42" rx="10" fill="#f5f5f5" stroke="#8c7b6c" stroke-width="1.5"/>
+  <text x="630" y="164" class="box-label">Output x</text>
+  <text x="810" y="164" class="dim-label">(B, T, 768)</text>
+
+  <path d="M 630 785 V 733" class="main-flow-arrow"/>
+  <circle cx="630" cy="752" r="3" fill="#433422"/>
+  <path d="M 630 695 V 674" class="main-flow-arrow"/>
+  <path d="M 630 590 V 570" class="main-flow-arrow"/>
+  <path d="M 630 535 V 497" class="main-flow"/>
+  <path d="M 630 463 V 428" class="main-flow-arrow"/>
+  <path d="M 630 390 V 359" class="main-flow-arrow"/>
+  <path d="M 630 285 V 267" class="main-flow-arrow"/>
+  <path d="M 630 232 V 227" class="main-flow"/>
+  <path d="M 630 193 V 180" class="main-flow-arrow"/>
+
+  <path d="M 630 752 H 390 V 480 H 613" class="residual-line" style="marker-end: url(#arrowhead);"/>
+  <text x="400" y="470" style="font-size: 11px; fill: #bc6c25; font-weight: 700;">Residual Path</text>
+
+  <path d="M 630 455 H 445 V 210 H 613" class="residual-line" style="marker-end: url(#arrowhead);"/>
+  <text x="455" y="200" style="font-size: 11px; fill: #bc6c25; font-weight: 700;">Residual Path</text>
+
+  <g transform="translate(960, 250)">
+    <text x="0" y="0" style="font-size: 15px; font-weight: 700; fill: #634832;">Block Details</text>
+    <rect x="0" y="10" width="165" height="2" fill="#d7ccc8"/>
+    <text x="0" y="36" class="callout-box" style="fill: #8c7b6c;">- Pre-LN residual design</text>
+    <text x="0" y="58" class="callout-box" style="fill: #8c7b6c;">- Input and output keep shape</text>
+    <text x="0" y="80" class="callout-box" style="fill: #8c7b6c;">- 12 heads x 64 dim = 768</text>
+    <text x="0" y="102" class="callout-box" style="fill: #8c7b6c;">- Causal mask blocks future tokens</text>
+    <text x="0" y="124" class="callout-box" style="fill: #8c7b6c;">- FFN expands hidden size by 4x</text>
+  </g>
+
+  <g transform="translate(952, 520)">
+    <text x="0" y="0" style="font-size: 15px; font-weight: 700; fill: #634832;">Causal Mask</text>
+    <rect x="0" y="10" width="130" height="2" fill="#d7ccc8"/>
+    <rect x="0" y="28" width="30" height="30" fill="#d8e2dc" stroke="#8c7b6c" stroke-width="1"/>
+    <rect x="30" y="28" width="30" height="30" fill="#f6ede3" stroke="#8c7b6c" stroke-width="1"/>
+    <rect x="60" y="28" width="30" height="30" fill="#f6ede3" stroke="#8c7b6c" stroke-width="1"/>
+    <rect x="0" y="58" width="30" height="30" fill="#d8e2dc" stroke="#8c7b6c" stroke-width="1"/>
+    <rect x="30" y="58" width="30" height="30" fill="#d8e2dc" stroke="#8c7b6c" stroke-width="1"/>
+    <rect x="60" y="58" width="30" height="30" fill="#f6ede3" stroke="#8c7b6c" stroke-width="1"/>
+    <rect x="0" y="88" width="30" height="30" fill="#d8e2dc" stroke="#8c7b6c" stroke-width="1"/>
+    <rect x="30" y="88" width="30" height="30" fill="#d8e2dc" stroke="#8c7b6c" stroke-width="1"/>
+    <rect x="60" y="88" width="30" height="30" fill="#d8e2dc" stroke="#8c7b6c" stroke-width="1"/>
+    <text x="15" y="48" class="tiny-label" text-anchor="middle">1</text>
+    <text x="45" y="48" class="tiny-label" text-anchor="middle">0</text>
+    <text x="75" y="48" class="tiny-label" text-anchor="middle">0</text>
+    <text x="15" y="78" class="tiny-label" text-anchor="middle">1</text>
+    <text x="45" y="78" class="tiny-label" text-anchor="middle">1</text>
+    <text x="75" y="78" class="tiny-label" text-anchor="middle">0</text>
+    <text x="15" y="108" class="tiny-label" text-anchor="middle">1</text>
+    <text x="45" y="108" class="tiny-label" text-anchor="middle">1</text>
+    <text x="75" y="108" class="tiny-label" text-anchor="middle">1</text>
+    <text x="110" y="48" class="box-sub" style="text-anchor: start;">can attend</text>
+    <text x="110" y="78" class="box-sub" style="text-anchor: start;">future masked</text>
+  </g>
+
+  <text x="640" y="930" class="box-sub" style="font-size: 12px; font-style: italic;">One block preserves sequence length and hidden size while adding context mixing and nonlinear feature transformation.</text>
+</svg>
