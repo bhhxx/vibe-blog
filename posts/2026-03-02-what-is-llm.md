@@ -4,6 +4,18 @@ date: 2026-03-02
 tags: ["LLM"]
 description: "从初学者角度了解什么是大语言模型"
 
+ai_summary: >-
+  文章从初学者视角概述了 LLM 的三块基础：Embedding、Transformer 自注意力以及 next-token prediction，目的是建立最初的语言模型直觉。
+ai_summary_topics:
+  - Embedding
+  - Self-Attention / Transformer
+  - Next Token Prediction
+ai_mastery_signal: >-
+  体现的是 foundation 层面的概念理解，已经能把“文字变向量、上下文建模、按概率接龙生成”串起来，但还没有进入张量级机制。
+ai_adjacent_gap: >-
+  下一步最值得补的是 Transformer 内部的数据流和张量形状变化，以及训练与推理为什么在计算模式上截然不同。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 注：本篇文章仅从一个初学者的角度结合 AI 的偏综述类文章

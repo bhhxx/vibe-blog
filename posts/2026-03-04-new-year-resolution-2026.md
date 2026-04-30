@@ -3,6 +3,18 @@ title: "2026 年度计划"
 date: 2026-03-04
 tags: ["年度"]
 description: "2026 年的规划"
+ai_summary: >-
+  这篇文章是 2026 年个人规划，内容包括毕业、攒钱、公众号运营、技术积累、共同学习、形象管理和写作要求。
+ai_summary_topics:
+  - 年度规划
+  - 技术积累目标
+  - 写作与运营
+ai_mastery_signal: >-
+  这不是 AI infra 技术文章，但能看出作者明确把持续写文、跟进 AI 新技术和长期输出作为年度目标的一部分。
+ai_adjacent_gap: >-
+  若把它纳入学习语料，下一步最值得补的是把“跟上 AI 时代”拆成可执行的专题路线、节奏和里程碑。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # 毕业 + 攒钱

@@ -5,6 +5,18 @@ tags: ["AI Infra"]
 description: "从 IO-aware 角度理解 FlashAttention-1 的核心思路"
 toc: true
 tocDepth: 3
+ai_summary: >-
+  文章从 IO-aware 视角解释 FlashAttention-1：通过 tiling、online softmax、算子融合和重计算，避免把完整的 score/probability 矩阵写回 HBM，从而减少显存与 IO 开销。
+ai_summary_topics:
+  - FlashAttention
+  - Online Softmax
+  - IO-aware Tiling
+ai_mastery_signal: >-
+  这篇文章体现出较强的机制推导能力，已经能把 attention 数学、GPU 存储层级和 wall-clock 性能联系起来，而不是只停留在“它更快”这种结论。
+ai_adjacent_gap: >-
+  下一步最值得补的是 kernel 级实现细节、并行分工、反向传播处理，以及 FlashAttention-2/3 与实际推理/训练框架的集成差异。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # 深入理解 FlashAttention：分块、算子融合与重计算的艺术

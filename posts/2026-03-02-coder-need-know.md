@@ -3,6 +3,18 @@ title: "程序员不应该混淆的知识"
 date: 2026-03-02
 tags: ["coding"]
 description: "个人认为程序员不应该弄混的概念"
+ai_summary: >-
+  文章澄清了编辑器、编译器、IDE 三类工具的职责边界，并用 VS Code 作为灰色地带案例说明“插件增强的编辑器”与原生 IDE 的区别。
+ai_summary_topics:
+  - 编辑器 / 编译器 / IDE
+  - VS Code 定位
+  - 开发工具链基础
+ai_mastery_signal: >-
+  这是软件工具基础认知文章，不属于 AI infra 主线，但体现出作者在梳理概念边界、避免术语混淆。
+ai_adjacent_gap: >-
+  若继续延伸，更自然的方向是补构建系统、链接、运行时和调试器之间的关系，把工具链理解从概念扩展到执行流程。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 ## 编译器 vs 编辑器 vs IDE

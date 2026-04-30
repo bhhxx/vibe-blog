@@ -3,6 +3,18 @@ title: "GPU 是如何执行的"
 date: 2026-02-21
 tags: ["GPU"]
 description: "GPU 是如何执行的"
+ai_summary: >-
+  文章沿着 CUDA kernel 的真实执行路径展开：从源码编译到 PTX/SASS，再到 launch、warp 形成、调度、访存和延迟隐藏，建立了从代码到硬件动作的整体链路。
+ai_summary_topics:
+  - Kernel 编译链路
+  - Warp 调度
+  - GPU 内存层级
+ai_mastery_signal: >-
+  已能把 coalescing、divergence、寄存器分配、occupancy 和 latency hiding 放进同一条执行叙事中，体现出从概念走向机制级理解。
+ai_adjacent_gap: >-
+  下一步最值得补的是把这套执行模型映射到真实 profiling：看哪些 counter、如何区分 compute-bound 与 memory-bound、怎样定位瓶颈。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # Kernel 是如何在 GPU 上执行的？从代码到电路的深度解构

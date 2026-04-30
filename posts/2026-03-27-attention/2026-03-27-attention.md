@@ -5,6 +5,18 @@ tags: ["LLM"]
 description: "观察 Attention 的数据流动"
 toc: true
 tocDepth: 3
+ai_summary: >-
+  文章从 Q、K、V 的生成讲到打分、softmax、加权求和、causal mask 与 multi-head，并用一个可运行例子把 attention 的张量数据流完整走了一遍。
+ai_summary_topics:
+  - Attention 数学
+  - Causal Mask
+  - Multi-Head 与数据流
+ai_mastery_signal: >-
+  已经进入机制级理解：不只会背公式，还能通过具体矩阵例子解释每一步在做什么，这为后续分析 KV cache 和高性能 attention 奠定了基础。
+ai_adjacent_gap: >-
+  最自然的延伸是把 attention 数学映射到 IO、kernel 和显存行为，理解为什么同一个公式在推理系统里会变成性能瓶颈。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # 我终于看懂了 Attention 是怎么计算的

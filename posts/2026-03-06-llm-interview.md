@@ -3,6 +3,18 @@ title: "LLM Interview"
 date: 2026-03-07
 tags: ["LLM"]
 description: "大模型面经"
+ai_summary: >-
+  文章汇总了一组大模型方向的面试题，覆盖 attention、SFT 与 post-training、RAG、Agent、工具调度、评估体系和链路延迟优化等话题。
+ai_summary_topics:
+  - 面经题库
+  - Post-Training / RAG
+  - Agent 系统设计
+ai_mastery_signal: >-
+  这更像能力地图而不是知识展开，说明已经意识到大模型岗位常见问题面向哪些子系统，但还看不出逐题推导和工程权衡深度。
+ai_adjacent_gap: >-
+  最值得补的是挑几类高频题做机制级回答，尤其是 post-training、RAG 评估、Agent latency 优化和工具调度策略。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # LLM Interview

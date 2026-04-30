@@ -3,6 +3,18 @@ title: "什么是流式多处理器"
 date: 2026-03-01
 tags: ["GPU"]
 description: "了解流式多处理器的架构"
+ai_summary: >-
+  文章把 SM 拆成执行单元、调度单元和片上存储三大区域，解释了 warp 如何被组织、派发与切换，从而说明 SM 为什么是 GPU 吞吐能力的核心。
+ai_summary_topics:
+  - SM 架构
+  - Warp Scheduler
+  - Shared Memory 与寄存器
+ai_mastery_signal: >-
+  已能说清 SM 内部的功能分工与 latency hiding 逻辑，说明对 GPU 执行单元的静态结构和基本动态行为都有了较清晰认识。
+ai_adjacent_gap: >-
+  下一步值得补的是 occupancy、issue width、寄存器/共享内存配额如何限制并发，以及这些资源约束怎样影响 kernel 表现。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # 深入 GPU 的“心脏”：什么是流式多处理器？

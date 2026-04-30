@@ -3,6 +3,18 @@ title: "一个 GPT-2 风格 Transformer 架构"
 date: 2026-03-29
 tags: ["LLM"]
 description: "一个 GPT-2 风格 Transformer 架构"
+ai_summary: >-
+  文章按数据流顺序拆解了一个 GPT-2 风格 decoder-only Transformer，从 tokenizer、embedding、positional embedding 一直讲到 LayerNorm、MHA、MLP、残差、输出层与整体堆叠。
+ai_summary_topics:
+  - GPT-2 架构
+  - Transformer Block
+  - Decoder-only 数据流
+ai_mastery_signal: >-
+  已能用代码和张量形状解释模块级实现，说明对模型内部部件的连接关系有了比较扎实的结构化理解，不再只是概念综述。
+ai_adjacent_gap: >-
+  下一步最值得补的是一次训练 step 的内存与计算账本，以及这个结构在长序列、分布式训练和推理时各自卡在哪里。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # 一个 GPT-2 风格 Transformer 架构

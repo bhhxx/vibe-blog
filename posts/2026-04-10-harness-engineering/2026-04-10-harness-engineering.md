@@ -5,6 +5,18 @@ tags: ["Agent"]
 description: "拆解 Agent = Harness + Model 背后的系统设计"
 toc: true
 tocDepth: 2
+ai_summary: >-
+  文章把 Agent 能力拆成 harness + model，系统梳理了文件系统、代码执行、sandbox、memory/search、context compaction、planning 与 verification 等让模型真正可工作的外部机制。
+ai_summary_topics:
+  - Harness engineering
+  - Agent runtime 组件
+  - Planning 与 Verification
+ai_mastery_signal: >-
+  已经不再把 Agent 理解成“会提示词就够了”，而是开始从可靠执行、权限边界、上下文管理和反馈闭环的系统视角来分析。
+ai_adjacent_gap: >-
+  最自然的延伸是继续补多请求调度、状态机设计、成本/时延权衡与线上可靠性，把概念层 runtime 组件落到生产系统细节。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # Harness Engineering：把模型变成 agent 的那层系统

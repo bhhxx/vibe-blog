@@ -5,6 +5,18 @@ tags: ["AI Infra"]
 description: "理解 vLLM 如何通过分页管理 KV cache"
 toc: true
 tocDepth: 3
+ai_summary: >-
+  文章从 prefill/decode 与 KV cache 的使用方式切入，解释了连续式缓存的浪费与碎片问题，再用 block table、分页、prefix sharing 和 copy-on-write 说明 vLLM 的 PagedAttention 设计。
+ai_summary_topics:
+  - PagedAttention
+  - KV cache 分页
+  - Block table 与 Copy-on-Write
+ai_mastery_signal: >-
+  已经能从服务系统角度理解显存组织方式如何影响吞吐，说明认识从单算子优化扩展到了推理引擎的数据结构与内存管理层。
+ai_adjacent_gap: >-
+  最自然的下一步是补 continuous batching、请求调度、admission control 和多租户隔离，理解分页后的 KV cache 如何与整个 serving engine 协同。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # vLLM 的 PagedAttention：KV cache 为什么要分页

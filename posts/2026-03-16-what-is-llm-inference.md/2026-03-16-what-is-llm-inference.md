@@ -3,6 +3,18 @@ title: "什么是 LLM 推理"
 date: 2026-03-16
 tags: ["LLM"]
 description: "什么是 LLM 推理"
+ai_summary: >-
+  文章从输入文本进入模型开始，串起了 tokenization、embedding、decoder-only、prefill/decode、KV cache、量化、推理框架和核心指标，给出一条端到端推理总览。
+ai_summary_topics:
+  - 推理 pipeline
+  - Prefill / Decode 与 KV cache
+  - 推理指标与框架
+ai_mastery_signal: >-
+  已能把推理过程拆成请求生命周期和系统指标两条线来理解，说明不再只停留在模型结构，而开始关注运行阶段的性能与工程组件。
+ai_adjacent_gap: >-
+  下一步最值得补的是 batching、continuous batching、请求调度、内存规划和 decode 阶段的真实瓶颈，而不只是单请求流程综述。
+ai_summary_model: gpt-5.4
+ai_summary_updated_at: 2026-04-21
 ---
 
 # 大模型是怎么样推理的
