@@ -9,6 +9,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import { CodeBlock } from './CodeBlock';
 import { MermaidDiagram } from './MermaidDiagram';
+import { katexOptions } from '@/lib/katexOptions';
 
 interface ArticleContentProps {
   content: string;
@@ -567,7 +568,7 @@ export function ArticleContent({ content, toc, tocDepth }: ArticleContentProps) 
     <div className="prose prose-lg dark:prose-invert max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
-        rehypePlugins={[rehypeRaw, rehypeKatex, rehypeHighlight]}
+        rehypePlugins={[rehypeRaw, [rehypeKatex, katexOptions], rehypeHighlight]}
         components={{
           h1: ({ children }) => null,
           h2: renderHeading('h2', 2),
