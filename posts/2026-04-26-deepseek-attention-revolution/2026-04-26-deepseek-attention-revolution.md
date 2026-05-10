@@ -1,3 +1,9 @@
+---
+title: "从 MHA、GQA 到 MLA、DSA、HCA/CSA：DeepSeek 文本大模型 Attention 架构演进"
+date: 2026-04-26
+tags: ["LLM"]
+description: "关于 deepseek attention 的一些数学计算"
+---
 # 从 MHA、GQA 到 MLA、DSA、HCA/CSA：DeepSeek 文本大模型 Attention 架构演进
 
 本文将介绍 DeepSeek 各代主线模型使用的 attention 架构。每一个 attention 将分为直觉解释、per hidden state 的数学计算过程展示以及总结部分。（本文默认是 attention 的 decode 阶段）
